@@ -6,6 +6,8 @@
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
+  --primary: "#158bd9";
+  --secondary: 2, 13, 31, 1;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -18,10 +20,48 @@
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  background: linear-gradient(to bottom, transparent, rgb(var(--secondary)))
+    rgb(var(--secondary));
 }
+
+.right-block-icon {
+  color: #158bd9;
+  font-size: 6rem;
+  text-align: center;
+  transform: rotate(50deg);
+  animation: arrow-movement 1.5s ease-in-out infinite alternate;
+}
+
+@keyframes arrow-movement {
+  0% {
+    color: #158bd9;
+    transform: translateX(0%) translateY(0%) rotate(50deg);
+  }
+
+  100% {
+    color: rgb(255, 255, 255);
+    transform: translateX(-25%) translateY(15%) rotate(50deg);
+  }
+}
+
+.swiper-wrapper{
+  padding-left: 80px;
+}
+
+/* .backgroundContainer {
+  position: relative;
+  width: 100%;
+  height: 300px; /* Set your desired height */
+  /* background-image: url('/public/images/'); Set the path to your image */
+  /* background-size: cover; */
+  /* background-position: center; */
+/* } */ 
+/* 
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Adjust the opacity as needed */
+/* } */
