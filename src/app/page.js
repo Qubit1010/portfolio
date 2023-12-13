@@ -111,7 +111,7 @@ export default function Home() {
             {/* left-content */}
             <div>
               <h1 className="text-6xl font-bold">
-                I'm Aleem-Ul-Hassan
+                I&aposm Aleem-Ul-Hassan
                 <FiArrowUpRight className="inline-block  text-primary -translate-y-8" />
               </h1>
               <h1 className="text-3xl text-sky-300 font-bold my-4">
