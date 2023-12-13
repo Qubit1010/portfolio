@@ -60,11 +60,11 @@ import SlideImg10 from "/public/images/SlideProject10.png";
 import SlideImg11 from "/public/images/SlideProject11.png";
 import SlideImg12 from "/public/images/SlideProject12.png";
 
-import TestimonialImg from "/public/images/TestimonialPic1.jpg";
-import TestimonialImg2 from "/public/images/TestimonialPic5.jpg";
+import TestimonialImg from "/public/images/TestimonialPic1.png";
+import TestimonialImg2 from "/public/images/TestimonialPic5.png";
 import TestimonialImg3 from "/public/images/TestimonialPic4.png";
 import TestimonialImg4 from "/public/images/TestimonialPic6.png";
-import TestimonialImg5 from "/public/images/TestimonialPic7.jpg";
+import TestimonialImg5 from "/public/images/TestimonialPic7.png";
 
 // Import Swiper styles
 // import "swiper/swiper-bundle.min.css";
