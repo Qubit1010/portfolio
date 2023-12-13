@@ -8,9 +8,9 @@ export default function Header() {
   return (
     <header className="w-10/12 mx-auto  flex items-center justify-between gap-8 p-8 px-0">
       <nav className="flex gap-8 ">
-        <Link href="/" className="text-white text-xl font-semibold	">
+        {/* <Link href="/" className="text-white text-xl font-semibold	">
           Home
-        </Link>
+        </Link> */}
         <Link href="/about" className="text-white text-xl font-semibold	">
           About
         </Link>
@@ -19,9 +19,9 @@ export default function Header() {
         </Link>
       </nav>
 
-      <div>
+      <Link href="/">
         <Image className="w-24" alt="logo" src={Logo} />
-      </div>
+      </Link>
 
       {/* <Link href="/contact" className="text-white text-xl">
         Contact
