@@ -60,11 +60,11 @@ import SlideImg10 from "/public/images/SlideProject10.png";
 import SlideImg11 from "/public/images/SlideProject11.png";
 import SlideImg12 from "/public/images/SlideProject12.png";
 
-import TestimonialImg from "/public/images/TestimonialPic1.JPG";
-import TestimonialImg2 from "/public/images/TestimonialPic5.JPG";
-import TestimonialImg3 from "/public/images/TestimonialPic5.JPG";
-import TestimonialImg4 from "/public/images/TestimonialPic5.JPG";
-import TestimonialImg5 from "/public/images/TestimonialPic5.JPG";
+import TestimonialImg from "/public/images/TestimonialPic1.jpg";
+import TestimonialImg2 from "/public/images/TestimonialPic5.jpg";
+import TestimonialImg3 from "/public/images/TestimonialPic4.png";
+import TestimonialImg4 from "/public/images/TestimonialPic6.png";
+import TestimonialImg5 from "/public/images/TestimonialPic7.jpg";
 
 // Import Swiper styles
 // import "swiper/swiper-bundle.min.css";
@@ -111,7 +111,7 @@ export default function Home() {
             {/* left-content */}
             <div>
               <h1 className="text-6xl font-bold">
-                I&aposm Aleem-Ul-Hassan
+                I&apos;m Aleem-Ul-Hassan
                 <FiArrowUpRight className="inline-block  text-primary -translate-y-8" />
               </h1>
               <h1 className="text-3xl text-sky-300 font-bold my-4">
