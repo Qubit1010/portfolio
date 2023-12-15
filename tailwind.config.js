@@ -16,6 +16,13 @@ module.exports = {
         primary: "#158bd9",
         secondary: "#020d1f",
       },
+      screens: {
+        xsm: "440px",
+      },
+      height: {
+        116: "23rem",
+        132: "42rem",
+      },
       // backgroundImage: {
       //   "sliderImg-1": "url('/public/images/LatestPic1.png')",
       //   "sliderImg-2": "url('/public/images/LatestPic2.png')",

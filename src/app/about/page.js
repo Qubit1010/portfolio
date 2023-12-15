@@ -37,8 +37,8 @@ export default function About() {
           {/* Education */}
           <section>
             {/* container */}
-            <div className="w-10/12 h-auto py-6 grid grid-cols-2 my-16 mx-auto bg-gray-900 rounded">
-              <div className="flex flex-col items-center justify-center ">
+            <div className="w-10/12 h-auto py-6 md:grid grid-cols-2 my-16 mx-auto bg-gray-900 rounded">
+              <div className="flex flex-col items-center justify-center mb-8 ">
                 <h2 className="text-3xl font-bold ">Education</h2>{" "}
                 <Link
                   className="bg-primary mt-4 p-3 rounded hover:bg-slate-800 "
@@ -47,10 +47,10 @@ export default function About() {
                   Learn More
                 </Link>
               </div>
-              <div className="w-full grid grid-cols-2 gap-6 p-8">
+              <div className="w-full grid grid-cols-2 gap-6 p-4 lg:p-8">
                 {/* Block */}
                 <div className="h-36 flex flex-col bg-primary p-4 rounded-lg items-center justify-center">
-                  <h2 className="text-gray-900 font-bold text-xl text-center">
+                  <h2 className="text-gray-900 font-bold lg:text-xl text-center">
                     Matric / Primary School
                   </h2>
                   <h2 className="mt-2 text-sm text-center">
@@ -59,7 +59,7 @@ export default function About() {
                 </div>
                 {/* Block */}
                 <div className="h-36 flex flex-col bg-primary p-4 rounded-lg items-center justify-center">
-                  <h2 className="text-gray-900 font-bold text-xl text-center">
+                  <h2 className="text-gray-900 font-bold lg:text-xl text-center">
                     Intermediate / High School
                   </h2>
                   <h2 className="mt-2 text-sm text-center">
@@ -68,7 +68,7 @@ export default function About() {
                 </div>
                 {/* Block */}
                 <div className="h-36 flex flex-col bg-primary p-4 rounded-lg items-center justify-center">
-                  <h2 className="text-gray-900 font-bold text-xl text-center">
+                  <h2 className="text-gray-900 font-bold lg:text-xl text-center">
                     BS in Computer Science
                   </h2>
                   <h2 className="mt-2 text-sm text-center">
@@ -77,7 +77,7 @@ export default function About() {
                 </div>
                 {/* Block */}
                 <div className="h-36 flex flex-col bg-primary p-4 rounded-lg items-center justify-center">
-                  <h2 className="text-gray-900 font-bold text-xl text-center">
+                  <h2 className="text-gray-900 font-bold lg:text-xl text-center">
                     BS in Artificial Intelligence
                   </h2>
                   <h2 className="mt-2 text-sm text-center">
@@ -90,11 +90,11 @@ export default function About() {
           {/* Experience */}
           <section>
             {/* container */}
-            <div className="w-10/12 h-auto py-6 grid grid-cols-2 my-16 mx-auto bg-gray-900 rounded">
-              <div className="w-full grid grid-cols-2 gap-6 p-8">
+            <div className="w-10/12 h-auto py-6 flex flex-col md:grid grid-cols-2 my-16 mx-auto bg-gray-900 rounded">
+              <div className="w-full md:order-1 order-2 grid grid-cols-2 gap-6 p-4 lg:p-8">
                 {/* Block */}
                 <div className="h-36 flex flex-col bg-primary p-4 rounded-lg items-center justify-center">
-                  <h2 className="text-gray-900 font-bold text-xl text-center">
+                  <h2 className="text-gray-900 font-bold lg:text-xl text-center">
                     SDC
                   </h2>
                   <h2 className="mt-2 text-sm text-center">
@@ -103,7 +103,7 @@ export default function About() {
                 </div>
                 {/* Block */}
                 <div className="h-36 flex flex-col bg-primary p-4 rounded-lg items-center justify-center">
-                  <h2 className="text-gray-900 font-bold text-xl text-center">
+                  <h2 className="text-gray-900 font-bold lg:text-xl text-center">
                     Estate Supervisor
                   </h2>
                   <h2 className="mt-2 text-sm text-center">
@@ -112,7 +112,7 @@ export default function About() {
                 </div>
                 {/* Block */}
                 <div className="h-36 flex flex-col bg-primary p-4 rounded-lg items-center justify-center">
-                  <h2 className="text-gray-900 font-bold text-xl text-center">
+                  <h2 className="text-gray-900 font-bold lg:text-xl text-center">
                     Frontend Web Developer
                   </h2>
                   <h2 className="mt-2 text-sm text-center">
@@ -121,7 +121,7 @@ export default function About() {
                 </div>
                 {/* Block */}
                 <div className="h-36 flex flex-col bg-primary p-4 rounded-lg items-center justify-center">
-                  <h2 className="text-gray-900 font-bold text-xl text-center">
+                  <h2 className="text-gray-900 font-bold lg:text-xl text-center">
                     Frontend React Web Develpoer
                   </h2>
                   <h2 className="mt-2 text-sm text-center">
@@ -130,13 +130,13 @@ export default function About() {
                 </div>
                 {/* Block */}
                 <div className="h-36 col-span-2 flex flex-col bg-primary p-4 rounded-lg items-center justify-center">
-                  <h2 className="text-gray-900 font-bold text-xl text-center">
+                  <h2 className="text-gray-900 font-bold lg:text-xl text-center">
                     Freelancer At
                   </h2>
                   <h2 className="mt-2 text-sm text-center">Upwork & Fiverr</h2>
                 </div>
               </div>
-              <div className="flex flex-col items-center justify-center ">
+              <div className="md:order-2 order-1 mb-8 flex flex-col items-center justify-center ">
                 <h2 className="text-3xl font-bold ">Experience</h2>{" "}
                 <Link
                   className="bg-primary mt-4 p-3 rounded hover:bg-slate-800 "

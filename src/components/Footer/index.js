@@ -9,7 +9,7 @@ export default function Footer() {
     <footer>
       <div className="grid grid-cols-3 ">
         {/* Left Block */}
-        <div className="flex flex-col items-center justify-between bg-gray-900 py-8">
+        <div className="flex flex-col items-center justify-between bg-gray-900 py-8 px-8">
           <Image className="w-62" alt="logo" src={Logo} />
 
           <h2 className="text-sm">Copyright © 2023 Qubit | All rights reserved.</h2>
@@ -17,7 +17,7 @@ export default function Footer() {
 
         {/* Right Block */}
         <div className="flex flex-col items-center justify-center bg-primary col-span-2 gap-8 p-16">
-          <h1 className="w-2/4 text-6xl leading-snug text-center font-bold">
+          <h1 className="md:w-2/4 md:text-6xl text-4xl leading-snug text-center font-bold">
             Ready to work with me?
           </h1>
           <Link

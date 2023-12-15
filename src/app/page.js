@@ -1,4 +1,8 @@
 "use client";
+import { useRef, useEffect, useLayoutEffect } from "react";
+import gsap from "gsap";
+import ScrollTrigger from "gsap/dist/ScrollTrigger";
+
 import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -82,12 +86,37 @@ import "swiper/css/pagination";
 // };
 
 export default function Home() {
+  const sectionRef = useRef(null);
+  const triggerRef = useRef(null);
+
+  useLayoutEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+    const pin = gsap.timeline({
+      ScrollTrigger: {
+        trigger: triggerRef.current,
+        start: "top bottom",
+        end: "bottom bottom",
+        scrub: true,
+        markers: true,
+      },
+    });
+
+    pin.from(sectionRef.current, {
+      left: "-200px",
+      opacity: 0,
+      duration: 1,
+      // stagger: 2,
+      ease: "circ.out",
+    });
+  }, []);
+
   const settings = {
     dots: true,
     infinite: true,
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
+   
   };
 
   return (
@@ -95,7 +124,7 @@ export default function Home() {
       <Header />
       {/* Hero Section */}
       <section>
-        <div className="w-10/12 mx-auto pb-20 pt-10">
+        <div className="hero-sec w-10/12 mx-auto pb-20 pt-10">
           {/* top-content */}
           <div className="flex items-center justify-between mb-16">
             <h3 className="text-4xl font-bold text-primary">Hello!</h3>
@@ -107,17 +136,17 @@ export default function Home() {
             </div>
           </div>
           {/* bottom-content */}
-          <div className="flex items-center justify-between ">
+          <div className="sm:flex items-center justify-between ">
             {/* left-content */}
-            <div>
-              <h1 className="text-6xl font-bold">
+            <div className="mr-16">
+              <h1 className="sm:w-10/12 xsm:w-10/12 sm:leading-normal leading-relaxed text-4xl sm:text-6xl font-bold">
                 I&apos;m Aleem-Ul-Hassan
                 <FiArrowUpRight className="inline-block  text-primary -translate-y-8" />
               </h1>
-              <h1 className="text-3xl text-sky-300 font-bold my-4">
+              <h1 className="sm:text-3xl text-2xl text-sky-300 font-bold my-4">
                 Full Stack Web Developer
               </h1>
-              <p className="w-3/6 text-xl text-justify">
+              <p className="md:w-9/12 lg:w-8/12 text-xl text-justify">
                 As a dedicated web developer, I am deeply committed to crafting
                 visually compelling websites that captivate and engage users.
                 Armed with extensive experience in full-stack development and a
@@ -128,7 +157,7 @@ export default function Home() {
               </p>
             </div>
             {/* right-content */}
-            <div className="w-1/2 flex flex-col items-start justify-between gap-8">
+            <div className="w-1/2 mt-8 flex flex-col items-start justify-between gap-8">
               <div>
                 <h3 className="text-5xl font-bold">3+</h3>
                 <h4 className="text-base	 font-bold text-gray-400">
@@ -157,24 +186,24 @@ export default function Home() {
           {/* top-content */}
           <div>
             <h3 className="text-5xl font-bold text-center">Services</h3>
-            <h4 className="text-center mt-4">
+            <h4 className="w-10/12 mx-auto text-center mt-4">
               We put quality and clients requirements on top of the priority
               list.
             </h4>
           </div>
           {/* bottom-content */}
-          <div className="w-3/4 mx-auto my-8 grid grid-cols-3 gap-8 mt-16">
-            <div className="h-96 flex flex-col items-center justify-start pt-16 gap-4 px-4 bg-primary rounded-md">
+          <div className="xl:w-3/4 w-10/12 mx-auto my-8 md:grid grid-cols-3 gap-8 mt-16">
+            <div className=" flex flex-col items-center justify-start py-12 gap-4 px-8 md:0 mb-8 bg-primary rounded-md">
               <BsPeopleFill className="text-6xl" />
-              <h1 className="text-2xl font-bold">UI/UX Design</h1>
+              <h1 className="text-2xl text-center font-bold">UI/UX Design</h1>
               <p className="font-semibold text-center">
                 I can provide you with the best UI/UX design experience.
               </p>
             </div>
 
-            <div className="h-96 flex flex-col items-center justify-start pt-16 gap-4 px-4 bg-white rounded-md">
+            <div className=" flex flex-col items-center justify-start py-12 gap-4 px-8 md:0 mb-8 bg-white rounded-md">
               <AiOutlineAntDesign className="text-6xl text-gray-900" />
-              <h1 className="text-2xl text-gray-900 font-bold">
+              <h1 className="text-2xl text-center text-gray-900 font-bold">
                 Indentity Design
               </h1>
               <p className="font-semibold text-gray-900 text-center">
@@ -183,7 +212,7 @@ export default function Home() {
               </p>
             </div>
 
-            <div className="h-96 flex flex-col items-center justify-start pt-16 gap-4 px-4 bg-primary rounded-md">
+            <div className=" flex flex-col items-center justify-start py-12 gap-4 px-8 md:0 mb-8 bg-primary rounded-md">
               <FaCode className="text-6xl" />
               <h1 className="text-2xl font-bold">Development</h1>
               <p className="font-semibold text-center">
@@ -204,17 +233,17 @@ export default function Home() {
             Latest Projects
           </h3>
           {/* block */}
-          <div className="grid grid-cols-2" style={{ height: "380px" }}>
+          <div className="flex flex-col md:grid grid-cols-2">
             {/* left */}
-            <div className="">
+            <div className="md:relative">
               <Image
-                className="h-full"
+                className="md:h-full h-116"
                 alt="LatestImage-Portfolio"
                 src={LatestImg}
               />
             </div>
             {/* right */}
-            <div className="flex flex-col items-center justify-center  gap-8 px-24 bg-primary">
+            <div className="flex flex-col items-center justify-center gap-8 py-24 px-24 bg-primary">
               <h2 className="text-3xl font-bold text-secondary">Nucleairs</h2>
               <p className="font-semibold text-center">
                 A website that I developed with latest tech stack and integrated
@@ -230,9 +259,9 @@ export default function Home() {
             </div>
           </div>
           {/* block 2nd*/}
-          <div className="grid grid-cols-2" style={{ height: "380px" }}>
+          <div className="flex flex-col md:grid grid-cols-2">
             {/* right */}
-            <div className="flex flex-col items-center justify-center gap-8 px-24 bg-gray-900 ">
+            <div className="md:order-1 order-2 flex flex-col items-center justify-center gap-8 py-24 px-24 bg-gray-900 ">
               <h2 className="text-3xl font-bold text-primary">Smartlead</h2>
               <p className="font-semibold text-center">
                 A website that I worked on for a client on Upwork.
@@ -246,22 +275,22 @@ export default function Home() {
               </Link>
             </div>
             {/* left */}
-            <div className="">
-              <Image className="h-full" alt="logo" src={LatestImg2} />
+            <div className="md:order-2 order-1">
+              <Image className="md:h-full h-116" alt="logo" src={LatestImg2} />
             </div>
           </div>
           {/* block */}
-          <div className="grid grid-cols-2" style={{ height: "380px" }}>
+          <div className="flex flex-col md:grid grid-cols-2">
             {/* left */}
             <div className="">
               <Image
-                className="h-full"
+                className="md:h-full h-116"
                 alt="LatestImage-Portfolio"
                 src={LatestImg3}
               />
             </div>
             {/* right */}
-            <div className="flex flex-col items-center justify-center  gap-8 px-24 bg-primary">
+            <div className="flex flex-col items-center justify-center gap-8 py-24 px-24 bg-primary">
               <h2 className="text-3xl font-bold text-secondary">Model&Brand</h2>
               <p className="font-semibold text-center">
                 A website that I modeling agency website developed for a client
@@ -277,38 +306,38 @@ export default function Home() {
             </div>
           </div>
           {/* block 2nd*/}
-          <div className="grid grid-cols-2" style={{ height: "380px" }}>
+          <div className="flex flex-col md:grid grid-cols-2">
             {/* right */}
-            <div className="flex flex-col items-center justify-center gap-8 px-24 bg-gray-900 ">
+            <div className="md:order-1 order-2 flex flex-col items-center justify-center gap-8 py-24 px-24 bg-gray-900 ">
               <h2 className="text-3xl font-bold text-primary">SI-HER</h2>
               <p className="font-semibold text-center">
                 A crypto exchange info website developed for Fiver client.
               </p>
               <Link
                 className="p-3 px-4 border-2	border-primary rounded-xl"
-                href="https://www.smartlead.ai/"
+                href="https://www.si-her.live/"
                 target="_blank"
               >
                 <FiArrowRight className="text-primary" />
               </Link>
             </div>
             {/* left */}
-            <div className="">
-              <Image className="h-full" alt="logo" src={LatestImg4} />
+            <div className="md:order-2 order-1">
+              <Image className="md:h-full h-116" alt="logo" src={LatestImg4} />
             </div>
           </div>
           {/* block */}
-          <div className="grid grid-cols-2" style={{ height: "380px" }}>
+          <div className="flex flex-col md:grid grid-cols-2">
             {/* left */}
             <div className="">
               <Image
-                className="h-full"
+                className="md:h-full h-116"
                 alt="LatestImage-Portfolio"
                 src={LatestImg5}
               />
             </div>
             {/* right */}
-            <div className="flex flex-col items-center justify-center  gap-8 px-24 bg-primary">
+            <div className="flex flex-col items-center justify-center gap-8 py-24 px-24 bg-primary">
               <h2 className="text-3xl font-bold text-secondary">
                 Lostinfluence
               </h2>
@@ -318,7 +347,7 @@ export default function Home() {
               </p>
               <Link
                 className="p-3 px-4 border-2	border-secondary rounded-xl"
-                href="https://www.modelsandbrand.com/"
+                href="https://www.lostinfluence.com/"
                 target="_blank"
               >
                 <FiArrowRight className="text-secondary" />
@@ -326,9 +355,9 @@ export default function Home() {
             </div>
           </div>
           {/* block 2nd*/}
-          <div className="grid grid-cols-2" style={{ height: "380px" }}>
+          <div className="flex flex-col md:grid grid-cols-2">
             {/* right */}
-            <div className="flex flex-col items-center justify-center gap-8 px-24 bg-gray-900 ">
+            <div className="md:order-1 order-2 flex flex-col items-center justify-center gap-8 py-24 px-24 bg-gray-900 ">
               <h2 className="text-3xl font-bold text-primary">Chat App</h2>
               <p className="font-semibold text-center">
                 a Node.js, Express, HTML, and JavaScript project developed for a
@@ -336,29 +365,29 @@ export default function Home() {
               </p>
               <Link
                 className="p-3 px-4 border-2	border-primary rounded-xl"
-                href="https://www.smartlead.ai/"
+                href="https://chat-app-1010.onrender.com/"
                 target="_blank"
               >
                 <FiArrowRight className="text-primary" />
               </Link>
             </div>
             {/* left */}
-            <div className="">
-              <Image className="h-full" alt="logo" src={LatestImg6} />
+            <div className="md:order-2 order-1">
+              <Image className="md:h-full h-116" alt="logo" src={LatestImg6} />
             </div>
           </div>
           {/* block */}
-          <div className="grid grid-cols-2" style={{ height: "380px" }}>
+          <div className="flex flex-col md:grid grid-cols-2">
             {/* left */}
             <div className="">
               <Image
-                className="h-full"
+                className="md:h-full h-116"
                 alt="LatestImage-Portfolio"
                 src={LatestImg7}
               />
             </div>
             {/* right */}
-            <div className="flex flex-col items-center justify-center  gap-8 px-24 bg-primary">
+            <div className="flex flex-col items-center justify-center gap-8 py-24 px-24 bg-primary">
               <h2 className="text-3xl font-bold text-secondary">IHeartMile</h2>
               <p className="font-semibold text-center">
                 A website that I modeling agency website developed for a client
@@ -384,7 +413,7 @@ export default function Home() {
           </h3>
           {/* divider */}
           <div className="h-2 w-24 bg-white m-auto rounded"></div>
-          <div className="grid grid-cols-5 gap-4 mt-16">
+          <div className="grid xsm:grid-cols-2 md:grid-cols-5 gap-4 mt-16">
             <div className="flex flex-col items-center justify-center p-10 rounded bg-white">
               <FaHtml5 className="text-5xl text-primary" />
               <h2 className="text-2xl font-bold text-primary">HTML</h2>
@@ -405,7 +434,7 @@ export default function Home() {
               <h2 className="text-2xl font-bold text-primary">React</h2>
             </div>
 
-            <div className="flex flex-col items-center justify-center p-10 rounded bg-white">
+            <div className="xsm:col-span-2  md:col-span-1 flex flex-col items-center justify-center p-10 rounded bg-white">
               <SiRedux className="text-5xl text-primary" />
               <h2 className="text-2xl font-bold text-primary">Redux</h2>
             </div>
@@ -430,7 +459,7 @@ export default function Home() {
               <h2 className="text-2xl font-bold text-primary">Figma</h2>
             </div>
 
-            <div className="flex flex-col items-center justify-center p-10 rounded bg-gray-900">
+            <div className="xsm:col-span-2   md:col-span-1 flex flex-col items-center justify-center p-10 rounded bg-gray-900">
               <SiFirebase className="text-5xl text-primary" />
               <h2 className="text-2xl font-bold text-primary">Firebase</h2>
             </div>
@@ -448,9 +477,15 @@ export default function Home() {
             navigation
             modules={[Navigation, Pagination]}
             spaceBetween={50}
-            slidesPerView={3}
+            slidesPerView={1}
             pagination={{ clickable: true }}
             scrollbar={{ draggable: true }}
+            breakpoints={{
+              640: {
+                slidesPerView: 3,
+                spaceBetween: 20,
+              },
+            }}
           >
             <div className="p-8 text-blue-400">
               <SwiperSlide style={{ height: "380px" }}>
@@ -458,7 +493,7 @@ export default function Home() {
                   style={{
                     backgroundImage: `url(${SlideImg.src})`,
                   }}
-                  className="h-full relative bg-cover bg-center flex flex-col items-center justify-start pt-32 rounded gap-8"
+                  className=" h-full relative bg-cover bg-center flex flex-col items-center justify-start pt-32 rounded gap-8"
                 >
                   <div className="absolute inset-0 bg-black opacity-80"></div>
                   <Link
@@ -480,7 +515,7 @@ export default function Home() {
                   style={{
                     backgroundImage: `url(${SlideImg2.src})`,
                   }}
-                  className="h-full relative bg-cover bg-center flex flex-col items-center  justify-start pt-32 rounded gap-8"
+                  className=" h-full relative bg-cover bg-center flex flex-col items-center  justify-start pt-32 rounded gap-8"
                 >
                   <div className="absolute inset-0 bg-black opacity-80"></div>
                   <Link
@@ -502,7 +537,7 @@ export default function Home() {
                   style={{
                     backgroundImage: `url(${SlideImg4.src})`,
                   }}
-                  className="h-full relative bg-cover bg-center flex flex-col items-center  justify-start pt-32 rounded gap-8"
+                  className=" h-full relative bg-cover bg-center flex flex-col items-center  justify-start pt-32 rounded gap-8"
                 >
                   <div className="absolute inset-0 bg-black opacity-80"></div>
                   <Link
@@ -523,7 +558,7 @@ export default function Home() {
                   style={{
                     backgroundImage: `url(${SlideImg3.src})`,
                   }}
-                  className="h-full relative bg-cover bg-center flex flex-col items-center  justify-start pt-32 rounded gap-8"
+                  className=" h-full relative bg-cover bg-center flex flex-col items-center  justify-start pt-32 rounded gap-8"
                 >
                   <div className="absolute inset-0 bg-black opacity-80"></div>
                   <Link
@@ -544,7 +579,7 @@ export default function Home() {
                   style={{
                     backgroundImage: `url(${SlideImg5.src})`,
                   }}
-                  className="h-full relative bg-cover bg-center flex flex-col items-center  justify-start pt-32 rounded gap-8"
+                  className=" h-full relative bg-cover bg-center flex flex-col items-center  justify-start pt-32 rounded gap-8"
                 >
                   <div className="absolute inset-0 bg-black opacity-80"></div>
                   <Link
@@ -565,7 +600,7 @@ export default function Home() {
                   style={{
                     backgroundImage: `url(${SlideImg6.src})`,
                   }}
-                  className="h-full relative bg-cover bg-center flex flex-col items-center  justify-start pt-32 rounded gap-8"
+                  className=" h-full relative bg-cover bg-center flex flex-col items-center  justify-start pt-32 rounded gap-8"
                 >
                   <div className="absolute inset-0 bg-black opacity-80"></div>
                   <Link
@@ -608,7 +643,7 @@ export default function Home() {
                   style={{
                     backgroundImage: `url(${SlideImg8.src})`,
                   }}
-                  className="h-full relative bg-cover bg-center flex flex-col items-center  justify-start pt-32 rounded gap-8"
+                  className=" h-full relative bg-cover bg-center flex flex-col items-center  justify-start pt-32 rounded gap-8"
                 >
                   <div className="absolute inset-0 bg-black opacity-80"></div>
                   <Link
@@ -630,7 +665,7 @@ export default function Home() {
                   style={{
                     backgroundImage: `url(${SlideImg9.src})`,
                   }}
-                  className="h-full relative bg-cover bg-center flex flex-col items-center justify-start pt-32 rounded gap-8"
+                  className=" h-full relative bg-cover bg-center flex flex-col items-center justify-start pt-32 rounded gap-8"
                 >
                   <div className="absolute inset-0 bg-black opacity-80"></div>
                   <Link
@@ -651,7 +686,7 @@ export default function Home() {
                   style={{
                     backgroundImage: `url(${SlideImg10.src})`,
                   }}
-                  className="h-full relative bg-cover bg-center flex flex-col items-center justify-start pt-32 rounded gap-8"
+                  className=" h-full relative bg-cover bg-center flex flex-col items-center justify-start pt-32 rounded gap-8"
                 >
                   <div className="absolute inset-0 bg-black opacity-80"></div>
                   <Link
@@ -672,7 +707,7 @@ export default function Home() {
                   style={{
                     backgroundImage: `url(${SlideImg11.src})`,
                   }}
-                  className="h-full relative bg-cover bg-center flex flex-col items-center justify-start pt-32 rounded gap-8"
+                  className=" h-full relative bg-cover bg-center flex flex-col items-center justify-start pt-32 rounded gap-8"
                 >
                   <div className="absolute inset-0 bg-black opacity-80"></div>
                   <Link
@@ -693,7 +728,7 @@ export default function Home() {
                   style={{
                     backgroundImage: `url(${SlideImg12.src})`,
                   }}
-                  className="h-full relative bg-cover bg-center flex flex-col items-center justify-start pt-32 rounded gap-8"
+                  className=" h-full relative bg-cover bg-center flex flex-col items-center justify-start pt-32 rounded gap-8"
                 >
                   <div className="absolute inset-0 bg-black opacity-80"></div>
                   <Link
@@ -718,8 +753,8 @@ export default function Home() {
         {/* Testimonial BLock */}
         <div>
           {/* container */}
-          <div className="w-10/12 mx-auto grid grid-cols-3 py-32 rounded">
-            <div className="flex items-center justify-center bg-gray-900">
+          <div className="w-10/12 mx-auto md:grid grid-cols-3 py-32 rounded">
+            <div className="flex items-center justify-center py-8 bg-gray-900">
               <Image className="w-36" alt="logo" src={TestLogo} />
             </div>
             <div className="flex flex-col items-start justify-center gap-8 bg-primary p-16 col-span-2">
@@ -728,7 +763,7 @@ export default function Home() {
                 alt="logo"
                 src={TestimonialImg}
               />
-              <p className="text-xl font-semibold">
+              <p className="md:text-xl font-semibold">
                 <span>
                   <FaQuoteLeft className="text-secondary  text-2xl mb-4" />
                 </span>
@@ -749,8 +784,8 @@ export default function Home() {
         {/* Testimonial BLock */}
         <div>
           {/* container */}
-          <div className="w-10/12 mx-auto grid grid-cols-3 py-32 rounded">
-            <div className="flex items-center justify-center bg-gray-900">
+          <div className="w-10/12 mx-auto md:grid grid-cols-3 py-32 rounded">
+            <div className="flex items-center justify-center py-8 bg-gray-900">
               <Image className="w-16" alt="logo" src={TestLogo2} />
             </div>
             <div className="flex flex-col items-start justify-center gap-8 bg-primary p-16 col-span-2">
@@ -759,7 +794,7 @@ export default function Home() {
                 alt="logo"
                 src={TestimonialImg2}
               />
-              <p className="text-xl font-semibold">
+              <p className="md:text-xl font-semibold">
                 <span>
                   <FaQuoteLeft className="text-secondary  text-2xl mb-4" />
                 </span>
@@ -776,8 +811,8 @@ export default function Home() {
         {/* Testimonial BLock */}
         <div>
           {/* container */}
-          <div className="w-10/12 mx-auto grid grid-cols-3 py-32 rounded">
-            <div className="flex items-center justify-center bg-gray-900">
+          <div className="w-10/12 mx-auto md:grid grid-cols-3 py-32 rounded">
+            <div className="flex items-center justify-center py-8 bg-gray-900">
               <Image className="w-16" alt="logo" src={TestLogo3} />
             </div>
             <div className="flex flex-col items-start justify-center gap-8 bg-primary p-16 col-span-2">
@@ -786,7 +821,7 @@ export default function Home() {
                 alt="logo"
                 src={TestimonialImg3}
               />
-              <p className="text-xl font-semibold">
+              <p className="md:text-xl font-semibold">
                 <span>
                   <FaQuoteLeft className="text-secondary  text-2xl mb-4" />
                 </span>
@@ -805,8 +840,8 @@ export default function Home() {
         {/* Testimonial BLock */}
         <div>
           {/* container */}
-          <div className="w-10/12 mx-auto grid grid-cols-3 py-32 rounded">
-            <div className="flex items-center justify-center bg-gray-900">
+          <div className="w-10/12 mx-auto md:grid grid-cols-3 py-32 rounded">
+            <div className="flex items-center justify-center py-8 bg-gray-900">
               <Image className="w-24" alt="logo" src={TestLogo4} />
             </div>
             <div className="flex flex-col items-start justify-center gap-8 bg-primary p-16 col-span-2">
@@ -815,7 +850,7 @@ export default function Home() {
                 alt="logo"
                 src={TestimonialImg4}
               />
-              <p className="text-xl font-semibold">
+              <p className="md:text-xl font-semibold">
                 <span>
                   <FaQuoteLeft className="text-secondary  text-2xl mb-4" />
                 </span>
@@ -832,8 +867,8 @@ export default function Home() {
         {/* Testimonial BLock */}
         <div>
           {/* container */}
-          <div className="w-10/12 mx-auto grid grid-cols-3 py-32 rounded">
-            <div className="flex items-center justify-center bg-gray-900">
+          <div className="w-10/12 mx-auto md:grid grid-cols-3 py-32 rounded">
+            <div className="flex items-center justify-center py-8 bg-gray-900">
               <Image className="w-32" alt="logo" src={TestLogo5} />
             </div>
             <div className="flex flex-col items-start justify-center gap-8 bg-primary p-16 col-span-2">
@@ -842,7 +877,7 @@ export default function Home() {
                 alt="logo"
                 src={TestimonialImg5}
               />
-              <p className="text-xl font-semibold">
+              <p className="md:text-xl font-semibold">
                 <span>
                   <FaQuoteLeft className="text-secondary  text-2xl mb-4" />
                 </span>

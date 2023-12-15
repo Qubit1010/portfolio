@@ -27,7 +27,7 @@ export default function Contact() {
         <section>
           {/* <h3 className="text-5xl font-bold text-center">Testimonials</h3> */}
           {/* container */}
-          <div className="w-10/12 h-auto py-16 grid grid-cols-2 my-16 mx-auto bg-gray-900">
+          <div className="w-10/12 h-auto py-16 md:grid grid-cols-2 my-16 mx-auto bg-gray-900">
             <div className="flex flex-col items-start justify-start p-16">
               <h2 className="text-3xl font-extrabold">Contact Information</h2>
               <h2 className="w-3/4 text-lg font-semibold mt-4 text-primary">
